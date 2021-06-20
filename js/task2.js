@@ -4,6 +4,12 @@
 // callback-функцию `callback`, а принимала всего два параметра `allUsers` и
 // `userName` и возвращала промис.
 
+// const toggleUserState = (allUsers, userName, callback) => {
+//   const updatedUsers = allUsers.map(user =>
+//     user.name === userName ? { ...user, active: !user.active } : user,
+//   );
+//   callback(updatedUsers);
+// };
 
 const users = [
   { name: 'Mango', active: true },
@@ -12,37 +18,24 @@ const users = [
   { name: 'Lux', active: false },
 ];
 
-// const toggleUserState = (allUsers, userName, callback) => {
-//   const updatedUsers = allUsers.map(user =>
-//     user.name === userName ? { ...user, active: !user.active } : user,
-//   );
+const toggleUserState = (allUsers, userName) => {
+       return new Promise (resolve => {
+       resolve(allUsers.map((user => 
+        user.name === userName ? { ...user, active: !user.active } : user)
+       ));
+ });
+};
 
-//   callback(updatedUsers);
-// };
-
-
-const toggleUserState = (allUsers, userName, callback) => {
-      const updatedUsers = allUsers.map(user =>
-        user.name === userName ? { ...user, active: !user.active } : user,
-      );
-      callback(updatedUsers);
-
-
-
-    };
 
 const logger = updatedUsers => console.table(updatedUsers);
-toggleUserState(users, 'Mango', logger);
 
-```js
 /*
  * Сейчас работает так
  */
-toggleUserState(users, 'Mango', logger);
-toggleUserState(users, 'Lux', logger);
+// toggleUserState(users, 'Mango', logger);
+// toggleUserState(users, 'Lux', logger);
 /*
  * Должно работать так
  */
-toggleUserState(users, 'Mango').then(logger);
-toggleUserState(users, 'Lux').then(logger);
-```
+toggleUserState(users, 'Makngo').then(logger);
+// toggleUserState(users, 'Lux').then(logger);
