@@ -37,5 +37,5 @@ const logger = updatedUsers => console.table(updatedUsers);
 /*
  * Должно работать так
  */
-toggleUserState(users, 'Makngo').then(logger);
+// toggleUserState(users, 'Makngo').then(logger);
 // toggleUserState(users, 'Lux').then(logger);
